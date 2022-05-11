@@ -45,10 +45,10 @@ def ServoDuty(degree):
 # 서보모터 1, 2번 제어용 duty값 세팅
 Duty1 = [0, 60.0, 120.0, 180.0]
 DutyDefault1 = 0
-Duty2 = [0, 60.0, 120,0, 180.0]
+Duty2 = [0, 60.0, 120.0, 180.0]
 DutyDefault2 = 0
 
-def draw_ped(img, label, x0, y0, xt, yt, color=(255,127,0), text_color=(255,255,255)):
+def draw_ped(img, label, x0, y0, xt, yt, color=(255, 127, 0), text_color=(255, 255, 255)):
 
     (w, h), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
     cv2.rectangle(img,
@@ -81,9 +81,8 @@ print("[INFO] finish load model...")
 
 names = np.array(['Ariel_Sharon', 'Colin_Powell', 'Donald_Rumsfeld', 'George_W_Bush', 'Gerhard_Schroeder', 'Hugo_Chavez', 'Jacques_Chirac',
          'Jean_Chretien', 'Jinwoo_Yoon', 'John_Ashcroft', 'Junichiro_Koizumi', 'KeonHee_Jeong', 'KyungSoo_Jeong', 'Serena_Williams', 'Tony_Blair'])
-
-#  
-le  = LabelEncoder()
+ 
+le = LabelEncoder()
 le.fit(names)
 labels = le.classes_
 name_vec = le.transform(names)
@@ -119,7 +118,7 @@ while cap.isOpened() :
                     if(DutyDefault2 == 3) :
                         DutyDefault2 = 0
             else :
-                label_text = "N/A" #continue로 써도 됨
+                label_text = "N/A"  #continue로 써도 됨
             frame = draw_ped(frame, label_text, x, y, x + w, y + h, color=(0,255,255), text_color=(50,50,50))
        
         cv2.imshow('Detect Face', frame)
